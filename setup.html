@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Import Documents</title>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/meilisearch@latest/dist/bundles/meilisearch.umd.js"></script>
+    <script>
+      const client = new MeiliSearch({
+        host: "https://ms-7819c4e76e2b-4115.sgp.meilisearch.io",
+        apiKey: "5f877b9942355be7aabc43f506acd2ecf8901666",
+      });
+
+      fetch("./onepiece-test.json")
+        .then((res) => res.json())
+        .then((episodes) => {
+          client
+            .index("onepiece-test3")
+            .addDocuments(episodes)
+            .then((result) => console.log(result));
+        });
+    </script>
+  </body>
+</html>
